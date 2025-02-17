@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Aging</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Adicionar Aging</h1>
+        <nav>
+            <a href="/" class="nav-button">Início</a>
+            <a href="/add_age" class="nav-button">Adicionar Aging</a>
+            <a href="/sobre" class="nav-button">Sobre</a>
+            <a href="/contribua" class="nav-button">Contribua</a>
+        </nav>
+        <button id="darkModeToggle" class="darkModeButton">
+            <img id="darkModeIcon" src="{{ url_for('static', filename='imgs/light-mode-icon.png') }}" alt="Modo Claro" title="Testtt"width="40" height="40">
+        </button>
+    </header>
+
+    <div class="flexbox">
+        <section class="exemplo_add_age1">
+            <h2>Exemplo de sucesso</h2>
+            Item estava +9 e você tentou<br>dar +10 usando Pedra do Aging,<br>e o item subiu +1:
+            <img id="exampleImageSuc" src="{{ url_for('static', filename='imgs/exemplo_claro_suc.png') }}" alt="Exemplo modo Claro" title="Exemplo tentativa +11 (falhas)">
+        <!-- width="40" height="40" -->
+        </section>
+        <section class="age">
+            <form method="POST" class="my-form">
+                <label for="nivel">Nível do item:</label>
+                <select id="nivel" name="nivel" required>
+                    <option value=0>Limpo</option>
+                    <option value=1>+1</option>
+                    <option value=2>+2</option>
+                    <option value=3>+3</option>
+                    <option value=4>+4</option>
+                    <option value=5>+5</option>
+                    <option value=6>+6</option>
+                    <option value=7>+7</option>
+                    <option value=8>+8</option>
+                    <option value=9>+9</option>
+                    <option value=10>+10</option>
+                    <option value=11>+11</option>
+                    <option value=12>+12</option>
+                    <option value=13>+13</option>
+                    <option value=14>+14</option>
+                    <option value=15>+15</option>
+                    <option value=16>+16</option>
+                    <option value=17>+17</option>
+                    <option value=18>+18</option>
+                    <option value=19>+19</option>
+                    <option value=20>+20</option>
+                    <option value=21>+21</option>
+                    <option value=22>+22</option>
+                    <option value=23>+23</option>
+                    <option value=24>+24</option>
+                </select><br></br>
+                
+                <label for="catalyst">Catalisador:</label>
+                <select id="catalyst" name="catalyst" required>
+                    <option value="Nenhum">Nenhum</option>
+                    <option value="Pedra">Pedra do Aging</option>
+                    <option value="Super Pedra">Super Pedra do Aging</option>
+                    <option value="Safira">Safira do Aging</option>
+                    <option value="Ouro">Ouro Mágico</option>
+                    <option value="Ouro_anc">Ouro Mágico dos Anciões</option>
+                    <option value="Ouro_sup">Ouro Mágico Superior</option>
+                    <option value="Minerio">Minério Mágico</option>
+                </select><br></br>
+    
+                <label for="specificity">Resultado do Aging:</label>
+                    <select id="specificity" name="specificity" required>
+                        <option value="" selected>Escolha uma opção</option>
+                        <option value="+1">+1</option>
+                        <option value="+2">+2</option>
+                        <option value="-1">-1</option>
+                        <option value="-2">-2</option>
+                        <option value="Broken">Quebra</option>
+                    </select><br></br>
+    
+                <div class="number-input-wrapper">
+                    <input type="checkbox" id="enableNumberInput" name="checkbox"/>
+                    <label for="enableNumberInput">Múltiplas vezes?</label>
+                    <input type="number" id="numberInput" name="n_tents" min="2" value="2" step="1" disabled placeholder="2" />
+                </div>
+    
+                <div id="disclaimer" style="display: none; font-size: 0.9em;">
+                    <p><strong>Aviso:</strong> Por favor só use esta opção se tiver feito múltiplas tentativas de aging no mesmo nível  que tiveram o mesmo resultado.</p>
+                </div>
+    
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        <section class="exemplo_add_age2">
+            <div class="text_exemplo_2">
+                <h2>Exemplo de falha</h2>
+                Item estava +10 e você<br>tentoudar +11, falhando (-1)<br> 6 vezes:
+            </div>
+        <img id="exampleImageFail" src="{{ url_for('static', filename='imgs/exemplo_claro_falha.png') }}" alt="Exemplo modo Claro" title="Exemplo tentativa +11 (falhas)">
+    </section>
+    </div>
+
+<!--     <section class="exemplo_add_age">
+        <h2>Exemplo</h2>
+        Vamos supor que você está equipando seu personagem, e está no processo de dar aging no seu item.
+        Você comprou o item +9, e resolveu tentar deixá-lo +10 usando a Pedra do Aging, e logo na primeira tentativa ele subiu +1.
+        <img id="exampleImage" src="{{ url_for('static', filename='imgs/example_claro.png') }}" alt="Exemplo modo Claro" title="Exemplo tentativa +11 (falhas)" width="40" height="40">
+    </section> -->
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+    <script>
+        const checkbox = document.getElementById('enableNumberInput');
+        const numberInput = document.getElementById('numberInput');
+        const disclaimer = document.getElementById("disclaimer");
+
+        // checkbox.addEventListener('change', function () {
+        //     numberInput.disabled = !checkbox.checked; // Enable if checked, disable if not
+        // });
+
+        if (checkbox.checked) {
+                numberInput.disabled = false;  // Enable number input
+                disclaimer.style.display = "block";  // Show disclaimer
+            } else {
+                numberInput.disabled = true;  // Disable number input
+                disclaimer.style.display = "none";  // Hide disclaimer
+            };
+
+        checkbox.addEventListener("change", function() {
+            if (checkbox.checked) {
+                numberInput.disabled = false;  // Enable number input
+                disclaimer.style.display = "block";  // Show disclaimer
+            } else {
+                numberInput.disabled = true;  // Disable number input
+                disclaimer.style.display = "none";  // Hide disclaimer
+            }
+        });
+    </script>
+
+    <script>
+        const numberInput2 = document.getElementById('numberInput');
+
+        numberInput2.addEventListener('input', function () {
+            if (numberInput2.value < 2) {
+             numberInput2.setCustomValidity('Insira um número inteiro maior ou igual que 2');
+            numberInput2.reportValidity();
+            } else {
+              numberInput2.setCustomValidity('');
+            }
+        });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdsourcing do Aging BPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Crowdsourcing do Aging BPT</h1>
+        <nav>
+            <a href="/" class="nav-button">Inicio</a>
+            <a href="/add_age" class="nav-button">Adicionar Aging</a>
+            <a href="/sobre" class="nav-button">Sobre</a>
+            <a href="/contribua" class="nav-button">Contribua</a>
+        </nav>
+        <button id="darkModeToggle" class="darkModeButton">
+            <img id="darkModeIcon" src="{{ url_for('static', filename='imgs/light-mode-icon.png') }}" alt="Modo Claro" title="Testtt"width="40" height="40">
+        </button>
+    </header>
+    
+    <section>
+        <h2>Estatísticas de Aging</h2>
+        <div class="table-container">
+        <table border="1">
+            <tr>
+                <th rowspan="2">Tentativa de Aging</th>
+                <th colspan="8">Sucessos / Tentativas (%)</th>
+            </tr>
+            <tr>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/nenhum.png') }}" alt="Sem nada" width="30" height="30">
+                    <div class="image-description">Sem catalisador</div>
+                </div></th>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/pedra.png') }}" alt="Pedra do Aging" width="30" height="30">
+                    <div class="image-description">Pedra<br>do&nbsp;Aging</div>
+                </div></th>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/super_pedra.png') }}" alt="Super Pedra do Aging" width="30" height="30">
+                    <div class="image-description">Super&nbsp;Pedra<br>do&nbsp;Aging</div>
+                </div></th>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/safira.png') }}" alt="Safira do Aging" width="30" height="30">
+                    <div class="image-description">Safira<br>do&nbsp;Aging</div>
+                </div></th>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/ouro_magico.png') }}" alt="Ouro Mágico" width="30" height="30">
+                    <div class="image-description">Ouro Mágico</div>
+                </div></th>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/ouro_magico_anc.png') }}" alt="Ouro Mágico dos Anciões" width="30" height="30">
+                    <div class="image-description">Ouro&nbsp;Mágico<br>dos&nbsp;Anciões</div>
+                </div></th>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/ouro_magico_sup.png') }}" alt="Ouro Mágico Superior" width="30" height="30">
+                    <div class="image-description">Ouro&nbsp;Mágico<br>Superior</div>
+                </div></th>
+                <th><div class="image-container">
+                    <img src="{{ url_for('static', filename='imgs/minerio.png') }}" alt="Minério Mágico" width="30" height="30">
+                    <div class="image-description">Minério Mágico</div>
+                </div></th>
+            </tr>
+            {% for stat in stats %}
+            <tr>
+                <tr class="expandable-row">
+                <td> {% set n = stat["name"]|int %}
+                    {% if n==0 %}
+                        Limpo
+                    {% else %}
+                        {{n}}
+                    {% endif %} → {{ n + 1 }} </td>
+                <td>
+                    {{ stat["success_c1"] }}/{{ stat["attempts_c1"] }} ({{ (stat["success_c1"] / stat["attempts_c1"] * 100) | round(2) if stat["attempts_c1"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c1"] }} +2: {{ stat["plus2_c1"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c1"] }} -2: {{ stat["minus2_c1"] }}<br>
+                        Quebra: {{ stat["broken_c1"] }} 
+                    </div>
+                </td>
+                <td>{{ stat["success_c2"] }}/{{ stat["attempts_c2"] }} ({{ (stat["success_c2"] / stat["attempts_c2"] * 100) | round(2) if stat["attempts_c2"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c2"] }} +2: {{ stat["plus2_c2"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c2"] }} -2: {{ stat["minus2_c2"] }}<br>
+                        Quebra: {{ stat["broken_c2"] }} 
+                    </div>
+                </td>
+                <td>{{ stat["success_c3"] }}/{{ stat["attempts_c3"] }} ({{ (stat["success_c3"] / stat["attempts_c3"] * 100) | round(2) if stat["attempts_c3"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c3"] }} +2: {{ stat["plus2_c3"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c3"] }} -2: {{ stat["minus2_c3"] }}<br>
+                        Quebra: {{ stat["broken_c3"] }} 
+                    </div>
+                </td>
+                <td>{{ stat["success_c4"] }}/{{ stat["attempts_c4"] }} ({{ (stat["success_c4"] / stat["attempts_c4"] * 100) | round(2) if stat["attempts_c4"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c4"] }} +2: {{ stat["plus2_c4"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c4"] }} -2: {{ stat["minus2_c4"] }}<br>
+                        Quebra: {{ stat["broken_c4"] }} 
+                    </div>
+                </td>
+                <td>{{ stat["success_c5"] }}/{{ stat["attempts_c5"] }} ({{ (stat["success_c5"] / stat["attempts_c5"] * 100) | round(2) if stat["attempts_c5"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c5"] }} +2: {{ stat["plus2_c5"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c5"] }} -2: {{ stat["minus2_c5"] }}<br>
+                        Quebra: {{ stat["broken_c5"] }} 
+                    </div>
+                </td>
+                <td>{{ stat["success_c6"] }}/{{ stat["attempts_c6"] }} ({{ (stat["success_c6"] / stat["attempts_c6"] * 100) | round(2) if stat["attempts_c6"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c6"] }} +2: {{ stat["plus2_c6"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c6"] }} -2: {{ stat["minus2_c6"] }}<br>
+                        Quebra: {{ stat["broken_c6"] }} 
+                    </div>
+                </td>
+                <td>{{ stat["success_c7"] }}/{{ stat["attempts_c7"] }} ({{ (stat["success_c7"] / stat["attempts_c7"] * 100) | round(2) if stat["attempts_c7"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c7"] }} +2: {{ stat["plus2_c7"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c7"] }} -2: {{ stat["minus2_c7"] }}<br>
+                        Quebra: {{ stat["broken_c7"] }} </font>
+                    </div>
+                </td>
+                <td>{{ stat["success_c8"] }}/{{ stat["attempts_c8"] }} ({{ (stat["success_c8"] / stat["attempts_c8"] * 100) | round(2) if stat["attempts_c8"] > 0 else 0 }}%)
+                    <div class="extra-content">
+                        <br><b>Detalhado:</b><br>
+                        <font color="#00A40E">+1: {{ stat["plus1_c8"] }} +2: {{ stat["plus2_c8"] }}</font><br>
+                        <font color="#FF2626">-1: {{ stat["minus1_c8"] }} -2: {{ stat["minus2_c8"] }}<br>
+                        Quebra: {{ stat["broken_c8"] }} 
+                    </div>
+                </td>
+                </tr>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script>
+        const table = document.querySelector("table");
+        const rows = table.querySelectorAll("tr");
+        const cell = document.querySelector("td");
+        const sampleRowHeight = 35;
+        const expandedRowHeight = 3*sampleRowHeight;
+        const bodyHeight = (rows.length * sampleRowHeight) + expandedRowHeight;
+        console.log(bodyHeight);
+        // bodyHeight = 1300;
+        document.body.style.height = `${bodyHeight}px`;
+    </script>
+</body>
+</html>
+
+

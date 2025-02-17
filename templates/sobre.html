@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Sobre o projeto</h1>
+        <nav>
+            <a href="/" class="nav-button">Início</a>
+            <a href="/add_age" class="nav-button">Adicionar Aging</a>
+            <a href="/sobre" class="nav-button">Sobre</a>
+            <a href="/contribua" class="nav-button">Contribua</a>
+        </nav>
+        <button id="darkModeToggle" class="darkModeButton">
+            <img id="darkModeIcon" src="{{ url_for('static', filename='imgs/light-mode-icon.png') }}" alt="Modo Claro" title="Testtt"width="40" height="40">
+        </button>
+    </header>
+
+    <div class="sobres">
+    <section class="sobre">
+        Este projeto tem como objetivo usar a união da comunidade Pristoniana para, juntos, termos mais acesso à informação de um processo tão crucial nas nossas jornadas, como é o processo de Aging.<br>
+        Tomando inspiração do <a href="https://oldschool.runescape.wiki/w/RuneScape:Drop_Rate_Project" class="text-link"> Drop Rate Project</a>, e por achar um absurdo a falta de clareza e objetividade descrita tanto na <a href="https://wiki.priston.com.br/index.php/Guia_Avan%C3%A7ado#Sistema_de_Aging" class="text-link">Wiki do Priston</a> (ver abaixo), quanto no site e loja do jogo, decidimos criar este simples site para que possamos agregar as informações das nossas tentativas de Aging, e obtermos de forma objetiva as taxas de sucesso de cada nível de aging, e também a eficácia de cada catalisador do processo.
+        <div class="imagem_aging_wiki">
+            <img src="{{ url_for('static', filename='imgs/aging.png') }}" width="100%">
+        </div>
+    </section>
+    <section class="sobre_objetivos">
+        <h1>Objetivos do Projeto</h1>
+        O objetivo final desse projeto é, através do grande volume de dados, obter respostas para perguntas que todos já fizemos:
+        <ul>
+            <li>Qual a taxa de sucesso de aging em cada nível?</li>
+            <li>Qual o efeito de cada pedra?</li>
+            <li>Qual pedra é melhor de se usar em cada nível?</li>
+            <li>Em média, quanto vou gastar para deixar um item +20?</li>
+            <li>Como devo precificar um item com aging?</li>
+        </ul>
+        Todos esses objetivos são alcançáveis, mas precisamos de uma grande quantidade de tentativas de aging de cada nível, e com cada catalisador para obtermos as taxas corretas. Contamos com o apoio da comunidade Pristoniana!
+    </section>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>

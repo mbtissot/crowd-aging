@@ -1,0 +1,437 @@
+html {
+  overflow-y: scroll; /* Always show vertical scrollbar */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    color: black;
+    height: 2px;
+}
+
+header {
+    background: #333;
+    color: whitesmoke;
+    padding: 1rem;
+    text-align: center;
+}
+
+select, button {
+  background-color: whitesmoke;
+  color: black;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+nav {
+  display: flex; /* Display links horizontally */
+  gap: 5px; /* Space between boxes */
+  padding: 10px;
+  justify-content: center;
+/*  position: absolute;*/
+}
+
+nav a.nav-button {
+  text-decoration: none;
+  background-color: #333;
+  color: whitesmoke;
+/*  margin: 0 10px;*/
+  padding: 6px 10px;
+  border-radius: 0px; /* Rounded corners */
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+nav a.nav-button:hover {
+  background-color: #777;
+}
+
+.table-container {
+/*  max-height: 2000px; /* Adjust based on the height of (n-1) rows + 1 expanded row */
+  overflow: visible; /* Internal scrolling for the table */
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+section {
+    width: 85%;
+    margin: auto;
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section.age {
+    position: relative;
+    width: 20%;
+    margin: auto;
+    margin-top: 15px;
+/*    flex: 1;*/
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section.exemplo_add_age1 {
+    position: relative;
+/*    align-items: center;*/
+    width: 33%;
+/*    flex: 1*/
+/*    height: 10%;*/
+    margin: auto;
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section.exemplo_add_age1 img {
+    width: 50%;
+    align-self: center;
+    margin-left: 250px;
+    margin-top: -50px;
+/*    height: 10%;*/
+}
+
+section.exemplo_add_age2 {
+    position: relative;
+    width: 33%;
+/*    flex: 1;*/
+/*    height: 40%;*/
+    margin: auto;
+/*    margin-left:;*/
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section.exemplo_add_age2 img {
+    width: 60%;
+    align-self: center;
+    margin-left: 210px;
+    margin-top: -40px;
+    border-color: red;
+    border: ;
+/*    height: 10%;*/
+}
+
+
+.flexbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    height: 33vh;
+}
+
+.sobres {
+    gap: 60px;
+    height: 10vh;
+}
+
+section.sobre {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+section.sobre_objetivos {
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+section.QRcode_pix {
+    width: 60%;
+    line-height: 1.4;
+}
+
+.imagem_QR_pix {
+    padding-top: 40px;
+    margin-left: 250px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+/*#darkModeToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#darkModeToggle .icon {
+    width: 24px;
+    height: 24px;
+}*/
+
+#darkModeToggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    padding: 2px 2px;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+body.dark-mode #darkModeToggle {
+  background-color: #222;
+  border-color: white;
+}
+
+/*#darkModeToggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#darkModeToggle img {
+    width: 40px;
+    height: 40px;
+}*/
+
+.expandable-row {
+    transition: height 0.3s ease;
+    height: 50px;
+}
+/*, background-color 0.3s ease;*/
+
+.expandable-row:hover {
+    background-color: #dfdfdf;
+}
+
+.extra-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.expandable-row:hover .extra-content {
+    max-height: 100px; /* Adjust as needed */
+    opacity: 1;
+}
+
+.notbold{
+    font-weight:normal
+}
+
+
+body.dark-mode {
+    background-color: #333;
+    color: whitesmoke;
+}
+
+body.dark-mode .expandable-row {
+    background-color: #333;
+}
+
+body.dark-mode .extra-content {
+    background-color: #333;
+}
+
+body.dark-mode table {
+  background-color: #333;
+  color: white;
+  border-color: white; /* Optional: Make borders white for contrast */
+}
+
+body.dark-mode td, 
+body.dark-mode th {
+  border-color: white; /* Optional */
+}
+
+body.dark-mode section {
+    color: whitesmoke;
+    background: #333;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Header dark mode */
+body.dark-mode header{
+    background: #222;
+    color: whitesmoke;
+}
+
+/* Select and Button Dark Mode */
+body.dark-mode select,
+body.dark-mode button {
+  background-color: #333;
+  color: white;
+  border-color: white;
+}
+
+/* Links Light Mode */
+a.text-link {
+  color: blue;
+  text-decoration: none;
+}
+
+a.text-link:visited {
+  color: purple;
+}
+
+/* Links Dark Mode */
+body.dark-mode a.text-link {
+  color: #00bfff; /* Light blue for readability */
+}
+
+body.dark-mode a.text-link:visited {
+  color: #b19cd9; /* Soft purple */
+}
+
+.my-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 17%;
+  max-width: 200px;
+}
+
+
+body.dark-mode .form-group textarea,
+body.dark-mode .form-group select,
+body.dark-mode .form-group button {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.dark-mode .form-group button:hover {
+  background-color: #fff;
+}
+
+.number-input-wrapper {
+  display: flex;  /* Stack the elements vertically */
+  gap: 8px;  /* Space between the checkbox/label and the input field */
+}
+
+.number-input-wrapper input[type="number"] {
+  width: 80px;  /* Control width of input */
+  max-width: 80px;  /* Ensure the input doesn't stretch beyond 4 digits */
+  padding: 5px;  /* Optional: Adds space inside the input */
+  font-size: 14px;  /* Optional: Adjusts font size if necessary */
+}
+
+.number-input-wrapper input[type="checkbox"],
+.number-input-wrapper label {
+  display: inline-block;  /* Make checkbox and label inline */
+}
+
+input[type="number"]:disabled {
+  background-color: #f0f0f0;
+  color: #777;
+  cursor: not-allowed;
+}
+
+input[type="number"]:enabled {
+  background-color: whitesmoke;
+  color: black;
+  cursor: allowed;
+}
+
+/* Optional: Dark mode style for enabled input */
+body.dark-mode input[type="number"]:enabled {
+  background-color: #333;
+  color: whitesmoke;
+}
+
+/* Optional: Dark mode style for disabled input */
+body.dark-mode input[type="number"]:disabled {
+  background-color: #222;
+  color: #888;
+}
+
+#disclaimer {
+  color: red; /* Red in light mode */
+  width: 160%; /* Make it 80% of the parent container's width */
+  margin: 3px auto; /* Center the disclaimer horizontally */
+  padding: 3px; /* Add some padding for better spacing */
+  text-align: left; /* Left align the text (optional) */
+  word-wrap: break-word; /* Ensure long words break onto the next line */
+  margin-left: -55px;
+}
+
+body.dark-mode #disclaimer {
+  color: red; /* Blue in dark mode */
+}
+
+/*   IMAGES   */
+
+.imagem_aging_wiki {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 35px;
+  margin-right: 35px;
+  display: inline-block;
+}
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.image-description {
+  display: none;
+  position: absolute;
+  top: 100%;
+/*  transform: translateY(50%);*/
+  left: 50%;
+  transform: translate(-50%, 0px);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border-radius: 4px;
+  max-width: 150px;
+}
+
+.image-container:hover .image-description {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+body.dark-mode .image-description {
+    
+}

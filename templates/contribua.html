@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Contribua com o projeto</h1>
+        <nav>
+            <a href="/" class="nav-button">Início</a>
+            <a href="/add_age" class="nav-button">Adicionar Aging</a>
+            <a href="/sobre" class="nav-button">Sobre</a>
+            <a href="/contribua" class="nav-button">Contribua</a>
+        </nav>
+        <button id="darkModeToggle" class="darkModeButton">
+            <img id="darkModeIcon" src="{{ url_for('static', filename='imgs/light-mode-icon.png') }}" alt="Modo Claro" title="Testtt"width="40" height="40">
+        </button>
+    </header>
+
+    <section class="QRcode_pix">
+        Este website foi criado de forma independente e gostaríamos de mantê-lo sem propagandas.<br>
+        Se quiser contribuir com a manutenção do site, e as análises que serão feitas, por favor, utilize a chave Pix em QR Code abaixo:
+        <div class="imagem_QR_pix">
+            <img src="{{ url_for('static', filename='imgs/qr_code_pix.jpg') }}" title="QR Code Pix" width="60%">
+        </div>
+    </section>
+    <!-- <section class="sobre_objetivos">
+        <h1>Objetivos do Projeto</h1>
+        O objetivo final desse projeto é, através do grando volume de dados, obter respostas para perguntas que todos já fizemos:
+        <ul>
+            <li>Qual a taxa de sucesso de aging em cada nível?</li>
+            <li>Qual o efeito de cada pedra?</li>
+            <li>Qual pedra é melhor de se usar em cada nível?</li>
+            <li>Em média, quanto vou gastar para deixar um item +20?</li>
+            <li>Como devo precificar um item com aging?</li>
+        </ul>
+    </section> -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
